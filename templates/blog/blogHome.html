@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} BlogHome {% endblock title %}
+
+{% block js %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let previews = document.getElementsByClassName('preview');
+    Array.from(previews).forEach((element) => {
+      element.innerHTML = element.innerText;
+    });
+  });
+</script>
+{% endblock js %}
+{% block blogactive %} active {% endblock blogactive %} 
+
+{% block style %}
+
+  <style>
+  .custom-link {
+    color: #000; /* or whatever you want */
+    text-decoration: none;
+  }
+  
+  .custom-link:hover {
+    text-decoration: underline;
+  }
+  .container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+</style>
+
+{% endblock %}
+
+
+{% block body %}
+<div class="container my-3">
+    <h2>Coding Articles by Techi-Blog</h2>
+    {% for post in allPosts %}
+    
+  
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+      <div class="col-md-8 p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">Article By: {{ post.auther }}</strong>
+        <p><span> <i class="bi bi-eye me-1"></i>({{post.views}}) views</span></p>
+        <h3 class="mb-0"><a class="custom-link" href="{% url 'blogpost' post.slug %}">{{ post.title }}</a></h3>
+        <div class="mb-1 text-muted">{{ post.timeStamp }}</div>
+        <p class="card-text mb-auto">
+          <div class="preview">{{ post.content|safe|truncatechars:400 }}</div>
+        </p>
+        <div class="my-2">
+          <a href="{% url 'blogpost' post.slug %}" role="button" class="btn btn-primary">Continue reading</a>
+        </div>
+      </div>
+    
+      <div class="col-md-4 d-flex align-items-center justify-content-center p-2">
+        {% if post.image and post.image.name %}
+          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-thumbnail" style="width: 250px; height: auto;">
+        {% else %}
+          <img src="{% static 'images/default.jpg' %}" alt="Default image" class="img-thumbnail" style="width: 150px; height: auto;">
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+ {% endblock %}

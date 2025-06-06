@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %} about {% endblock title %} 
+{% block aboutactive %}active{% endblock aboutactive %}
+{% block body %}
+
+<!-- ABOUT HERO -->
+<div class="jumbotron p-5 text-center text-white" style="
+    background:
+      linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+      url('img/about-background.avif') center/cover no-repeat;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);">
+  <h1 class="display-5 fw-bold">About Teche-Blog</h1>
+  <p class="lead fst-italic">
+    Empowering the curious, the creative, and the code-driven to navigate the future of technology.
+  </p>
+</div>
+
+<!-- MISSION -->
+<div class="container my-5">
+  <div class="text-center text-secondary">
+    <h2 class="fw-bold text-primary mb-4">Our Mission</h2>
+    <p>
+      We deliver insightful, practical, and inspiring content across AI, startups, and coding — built for curious minds and tech lovers.
+    </p>
+  </div>
+</div>
+
+<!-- TEAM SECTION -->
+<div class="container my-5">
+  <h2 class="text-center text-primary fw-bold mb-4">Meet the Team</h2>
+  <div class="row justify-content-center text-center">
+    <div class="col-md-4 mb-4">
+      <div class="card border-0 shadow rounded-4">
+        <img src="img/team1.jpg" class="card-img-top rounded-top-4" alt="Alex Morgan">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Alex Morgan</h5>
+          <p class="card-text text-muted">Founder & AI Specialist</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card border-0 shadow rounded-4">
+        <img src="img/team2.jpg" class="card-img-top rounded-top-4" alt="Jamie Lee">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Jamie Lee</h5>
+          <p class="card-text text-muted">Frontend Developer</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card border-0 shadow rounded-4">
+        <img src="img/team3.jpg" class="card-img-top rounded-top-4" alt="Riya Patel">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Riya Patel</h5>
+          <p class="card-text text-muted">Tech Writer & Researcher</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<div class="container my-5">
+  <h2 class="text-center text-primary fw-bold mb-4">Our Journey</h2>
+  <ul class="timeline list-unstyled">
+    <li class="mb-5">
+      <h5 class="fw-semibold">2022 - Launched Teche-Blog</h5>
+      <p class="text-muted">Started with a vision to make tech more accessible and inspiring.</p>
+    </li>
+    <li class="mb-5">
+      <h5 class="fw-semibold">2023 - 1M+ Readers</h5>
+      <p class="text-muted">Our posts on AI and web dev trends reached over a million readers worldwide.</p>
+    </li>
+    <li class="mb-0">
+      <h5 class="fw-semibold">2024 - Growing Community</h5>
+      <p class="text-muted">Building tools, events, and collaborations with devs, startups, and thinkers.</p>
+    </li>
+  </ul>
+</div>
+
+<!-- TECH STACK -->
+<div class="container my-5">
+  <h2 class="text-center text-primary fw-bold mb-4">Our Tech Stack</h2>
+  <div class="row text-center text-secondary">
+    <div class="col-6 col-md-3 mb-3">
+      <i class="bi bi-code-slash fs-2 text-primary"></i>
+      <p>Python</p>
+    </div>
+    <div class="col-6 col-md-3 mb-3">
+      <i class="bi bi-braces fs-2 text-warning"></i>
+      <p>JavaScript</p>
+    </div>
+    <div class="col-6 col-md-3 mb-3">
+      <i class="bi bi-bootstrap-fill fs-2 text-purple"></i>
+      <p>Bootstrap</p>
+    </div>
+    <div class="col-6 col-md-3 mb-3">
+      <i class="bi bi-database fs-2 text-success"></i>
+      <p>Django</p>
+    </div>
+  </div>
+</div>
+
+
+{% endblock body %}

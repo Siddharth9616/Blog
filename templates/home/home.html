@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Teche-Blog {% endblock title %} 
+
+{% block homeactive %}active{% endblock homeactive %}
+
+{% block style %}
+
+  <style>
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  .custom-link {
+    color: #000; /* or whatever you want */
+    text-decoration: none;
+  }
+  
+  .custom-link:hover {
+    text-decoration: underline;
+  }
+  .btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.2);
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .text-glow {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+  
+  
+  
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container mb-5">
+  <div class="jumbotron p-4 p-md-5 text-center text-white" style="
+    background:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+        url('static/img/background.avif') center/cover no-repeat;
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;">
+    
+    <h1 class="display-4 fw-bold fade-in" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">Welcome to Teche-Blog!</h1>
+    
+    <p class="lead fst-italic text-light fade-in text-glow">
+      "The future of technology is being written today—stay informed, stay inspired, and take part in shaping the innovations of tomorrow."
+    </p>
+    
+    <hr class="my-4" style="border-top: 1px solid rgba(255,255,255,0.3);">
+    
+    <p class="text-light fade-in">
+        Teche-Blog is your go-to destination for the latest in tech trends, AI breakthroughs, startup insights, and developer tips. Whether you're a curious reader or a passionate coder, we bring you content that informs, inspires, and empowers your digital journey.
+    </p>
+    
+    <a class="btn btn-primary btn-lg px-4 mt-3 shadow-sm fade-in" href="/blog" role="button">
+        Go to Blog
+    </a>
+</div>
+</div>
+
+<div class="container mb-5">
+
+
+
+
+  <h2 class="my-4 mx-4 fw-bold position-relative" style="display: inline-block;">
+    Latest Blogposts
+    <span style="position: absolute; bottom: -5px; left: 0; height: 3px; width: 100%; background: #0d6efd; border-radius: 2px;"></span>
+  </h2>
+  
+
+
+    {% for post in allPosts  %}
+
+    <div class="container">
+        
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                  <strong class="d-inline-block mb-2 text-primary">Article By: {{post.auther}}</strong>
+                  <h3 class="mb-0"><a class="custom-link" href="{% url 'blogpost' post.slug %}">{{ post.title }}</a></h3>
+                  <div class="mb-1 text-muted">{{post.timeStamp|timesince}}</div>
+                  {% comment %} <p class="card-text mb-auto">{{post.content|truncatechars:200}}</p> {% endcomment %}
+                  {% comment %} <a href="{% url 'blogpost' post.slug %}" class="stretched-link">Continue reading</a> {% endcomment %}
+                </div>
+                <div class="col-md-4 d-flex align-items-center justify-content-center p-2">
+                  {% if post.image and post.image.name %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-thumbnail" style="width: 200px; height: auto;">
+                  {% else %}
+                    <img src="{% static 'images/default.jpg' %}" alt="Default image" class="img-thumbnail" style="width: 150px; height: auto;">
+                  {% endif %}
+                </div>   
+              </div>
+              </div>
+    {% endfor %}
+     
+{% endblock body %}
